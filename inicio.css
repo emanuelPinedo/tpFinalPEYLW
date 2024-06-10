@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: relative; /*Añadir para que los elementos con position absolute dentro de header se posicionen relativos a este*/
+    z-index: 2; /* Asegura que el header esté sobre la imagen del estadio*/
+}
+
+.logocontenedor {
+    position: absolute; /*Pongo el logo en una posición absoluta para que quede sobre la imagen del estadio*/
+    top: 10px;
+    left: 10px;
+    z-index: 3; /*Asegura que el logo esté sobre el estadio*/
+}
+
+.logo{
+    height: 100px;
+}
+
+a:link{
+    color: rgb(248, 243, 243);
+}
+
+a:visited{
+    color: rgba(233, 208, 179, 0.868);
+}
+
+nav {
+    width: 100%;
+    flex: 1; /*Permite que el nav ocupe el espacio restante */
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-left: 150px; /*Espacio a la izquierda para que no se superponga con el logo*/
+}
+
+/*Va a seleccionar todos los elementos de nav que sean divs*/
+nav > div {
+    width: 14.6%;
+    float: left;
+    background-color: #333;
+    height: 10%;
+    padding: 1.1rem;
+    box-sizing: border-box;
+    border: 2px solid black;
+}
+
+nav > div:hover {
+    background-color: rgb(246, 39, 39);
+    color: rgb(15, 16, 16);
+}
+
+.estadio {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.estadio img {
+    width: 100%;
+    height: auto;
+    z-index: 1; /*Asegura que la imagen del estadio esté detrás del header y el logo*/
+}
+
+.estadio h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.noticias {
+    padding: 20px;
+    background-color: #111;
+    color: #fff;
+}
+
+.noticias h2 span a {
+    color: rgb(255, 7, 7);
+    text-decoration: underline;
+}
+
+.noticias-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.noticia {
+    flex: 1;
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.noticia img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: right;
+    padding: 10px 0;
+}
+
+footer .contacto {
+    margin: 0;
+}

@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(riversesion.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.todosdivs{
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.todosdivs h1{
+    font-size: 36px;
+    text-align: center;
+    color: rgb(34, 33, 33);
+}
+
+.todosdivs .inputbox{
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.inputbox input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+
+.inputbox input::placeholder{
+    color: #fff;
+}
+
+.todosdivs .recordarcontrasenia{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.recordarcontrasenia label input{
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.recordarcontrasenia a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.recordarcontrasenia a:hover{
+    text-decoration: underline;
+}
+
+.todosdivs .boton{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.todosdivs .registro{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.registro p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.registro p a:hover{
+    text-decoration: underline;
+}
+
+/*SECCIONES*/
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: absolute; /*Añadir para que los elementos con position absolute dentro de header se posicionen relativos a este*/
+    top: 0;
+    width: 100%;
+    z-index: 3; /* Asegura que el header esté sobre el login*/
+}
+
+.logocontenedor {
+    position: absolute; /*Pongo el logo en una posición absoluta para que quede sobre la imagen del estadio*/
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+}
+
+.logo{
+    height: 100px;
+}
+
+a:link{
+    color: rgb(248, 243, 243);
+}
+
+a:visited{
+    color: rgba(233, 208, 179, 0.868);
+}
+
+nav {
+    width: 100%;
+    flex: 1; /*Permite que el nav ocupe el espacio restante */
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-left: 150px; /*Espacio a la izquierda para que no se superponga con el logo*/
+}
+
+/*Va a seleccionar todos los elementos de nav que sean divs*/
+nav > div {
+    width: 14.6%;
+    float: left;
+    background-color: #333;
+    height: 10%;
+    padding: 1.1rem;
+    box-sizing: border-box;
+    border: 2px solid black;
+}
+
+nav > div:hover {
+    background-color: rgb(246, 39, 39);
+    color: rgb(15, 16, 16);
+}
