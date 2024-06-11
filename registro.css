@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(riversesion.png);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.formulario-registro {
+    width: 420px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    margin: auto;
+    margin-top: 120px;
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+}
+
+.formulario-registro h4 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.controles {
+    width: 100%;
+    background: transparent;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #1f53c5;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: white;
+}
+
+.formulario-registro p {
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+a:link{
+    color: rgb(248, 243, 243);
+}
+
+a:visited{
+    color: rgba(233, 208, 179, 0.868);
+}
+
+.formulario-registro a:hover{
+    color: white;
+    text-decoration: underline;
+}
+
+.formulario-registro .boton{
+    width: 100%;
+    background: #1f53c5;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+}
+
+/*SECCIONES*/
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: absolute; /*Añadir para que los elementos con position absolute dentro de header se posicionen relativos a este*/
+    top: 0;
+    width: 100%;
+    z-index: 3; /* Asegura que el header esté sobre el login*/
+}
+
+.logocontenedor {
+    position: absolute; /*Pongo el logo en una posición absoluta para que quede sobre la imagen del estadio*/
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+}
+
+.logo{
+    height: 100px;
+}
+
+a:link{
+    color: rgb(248, 243, 243);
+}
+
+a:visited{
+    color: rgba(233, 208, 179, 0.868);
+}
+
+nav {
+    width: 100%;
+    flex: 1; /*Permite que el nav ocupe el espacio restante */
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-left: 150px; /*Espacio a la izquierda para que no se superponga con el logo*/
+}
+
+/*Va a seleccionar todos los elementos de nav que sean divs*/
+nav > div {
+    width: 14.6%;
+    float: left;
+    background-color: #333;
+    height: 10%;
+    padding: 1.1rem;
+    box-sizing: border-box;
+    border: 2px solid black;
+}
+
+nav > div:hover {
+    background-color: rgb(246, 39, 39);
+    color: rgb(15, 16, 16);
+}
