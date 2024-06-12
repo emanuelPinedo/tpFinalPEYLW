@@ -1,81 +1,58 @@
-* {
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background: #000;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    color: #fff;
 }
 
-body{
+img {
+    width: 100%;
+}
+
+.contenedor {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url(riversesion.png);
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-.formulario-registro {
-    width: 420px;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    padding: 30px;
-    margin: auto;
-    margin-top: 120px;
-    border-radius: 4px;
-    font-family: 'calibri';
-    color: white;
-    box-shadow: 7px 13px 37px #000;
-}
-
-.formulario-registro h4 {
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
-.controles {
+    flex-direction: column;
+    margin-top: 150px; /* Ajustar para dejar espacio al header */
     width: 100%;
-    background: transparent;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 16px;
-    border: 1px solid #1f53c5;
-    font-family: 'calibri';
-    font-size: 18px;
-    color: white;
 }
 
-.formulario-registro p {
-    height: 40px;
-    text-align: center;
-    font-size: 16px;
-    line-height: 40px;
+.item {
+    display: flex;
+    background-color: #222;
+    border: 1px solid #444;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-a:link{
-    color: rgb(248, 243, 243);
+.item .imagen {
+    flex: 1;
+    margin-right: 20px;
 }
 
-a:visited{
-    color: rgba(233, 208, 179, 0.868);
+.item .contenido {
+    flex: 2;
+    text-align: left;
 }
 
-.formulario-registro a:hover{
-    color: white;
-    text-decoration: underline;
+.item .contenido b,
+.item .contenido h2,
+.item .contenido span {
+    display: block;
 }
 
-.formulario-registro .boton{
-    width: 100%;
-    background: #1f53c5;
-    border: none;
-    padding: 12px;
-    color: white;
-    margin: 16px 0;
-    font-size: 16px;
-    cursor: pointer;
+.divisor {
+    margin: 10px 0;
+    height: 1px;
+    background-color: #ddd;
 }
+
 
 /*SECCIONES*/
 
@@ -88,7 +65,6 @@ header {
     position: absolute; /*Añadir para que los elementos con position absolute dentro de header se posicionen relativos a este*/
     top: 0;
     width: 100%;
-    z-index: 3; /* Asegura que el header esté sobre el login*/
 }
 
 .logocontenedor {
@@ -98,19 +74,19 @@ header {
     z-index: 3;
 }
 
-.logo{
+.logo {
     height: 100px;
 }
 
-a:link{
+a:link {
     color: rgb(248, 243, 243);
 }
 
-a:visited{
+a:visited {
     color: rgba(233, 208, 179, 0.868);
 }
 
-nav {
+header > nav {
     width: 100%;
     flex: 1; /*Permite que el nav ocupe el espacio restante */
     display: flex;
