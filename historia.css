@@ -53,6 +53,9 @@ img {
     background-color: #ddd;
 }
 
+.contenido > h2{
+    color: rgb(250, 22, 22);
+}
 
 /*SECCIONES*/
 
