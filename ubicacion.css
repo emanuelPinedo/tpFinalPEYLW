@@ -1,38 +1,29 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     background: #0f0e0e;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
-.red{
-    color: rgb(255, 7, 7);
-    text-align: left;
-}
-
-.titulos{
-    padding: 80px;
-    margin: 80px;
-}
-
-ul > img {
-    max-width: 100%;
-    height: auto;
-    margin-right: 20px;
-    margin-bottom: 20px;
-}
-
-.conmebol{
-    height: 862px;
-    width: 862px;
-}
-
-/* Aumentar el tamaño de las letras en las listas */
-ul > li {
-    font-size: 1.2rem;
+.nombreestadio{
+    z-index: 1;
+    padding: 65px;
+    font-size: 40px;
     line-height: 1.6;
+    color: rgb(255, 7, 7);
+}
+
+.box {
+    padding: 40px;
     margin-bottom: 10px;
-    clear: both;
+    text-align: center;
+    z-index: 1;
+}
+.box a {
+    color: white;
+    text-decoration: none;
+}
+.box a:hover {
+    text-decoration: underline;
 }
 
 /*SECCIONES*/
