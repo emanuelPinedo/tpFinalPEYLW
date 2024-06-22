@@ -3,6 +3,8 @@ body {
     margin: 0;
     padding: 0;
     background: #ffffff;
+    min-height: 100vh;
+    max-width: 100%;
 }
 
 .red{

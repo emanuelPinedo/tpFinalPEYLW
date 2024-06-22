@@ -6,6 +6,7 @@
     <title>Inicio Sesión</title>
     <link rel="icon" href="river3.png" type="image/x-icon">
     <link rel="stylesheet" href="inicioSesion.css">
+    <script type="text/javascript" src="iniciar.js"></script>
 </head>
 <body>
     <header>
@@ -23,13 +24,13 @@
         </nav>
     </header>
     <div class="todosdivs">
-        <form>
+        <form id="formulario">
             <h1>Login</h1>
             <div class="inputbox">
-                <input type="email" placeholder="Email" required>
+                <input type="email" placeholder="Email" id="email">
             </div>
             <div class="inputbox">
-                <input type="password" placeholder="Contraseña" required>
+                <input type="password" placeholder="Contraseña" id="password">
             </div>
             <div class="recordarcontrasenia">
                 <label><input type="checkbox">Recordarme</label>
