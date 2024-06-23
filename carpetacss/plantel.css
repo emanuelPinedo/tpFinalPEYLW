@@ -4,7 +4,7 @@ body {
     align-items: center;
     min-height: 100vh;
     max-width: 100%;
-    background: url(riversesion.png);
+    background-image: url(../login/riversesion.png);
     background-size: cover;
     background-position: center;
     position: relative;
@@ -33,7 +33,6 @@ body {
 .slide {
     min-width: 100%;
     box-sizing: border-box;
-    position: relative; /* Añadido para que .info se posicione absolutamente dentro de .slide */
 }
 
 .slide img {
@@ -177,15 +176,13 @@ input[type="radio"] {
 }
 
 .info {
-    position: absolute; /* Cambiado a absolute */
-    bottom: 0%; /* Ajustado para moverlo más abajo */
+    position: rela;
+    bottom: 10px;
     left: 10px;
-    right: 10px; /* Para asegurarse de que el contenedor ocupe todo el ancho */
     color: white;
     background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
     padding: 10px 15px;
     border-radius: 5px;
-    box-sizing: border-box; /* Asegura que el padding no aumente el tamaño del elemento */
 }
 
 .info h2 {
@@ -215,19 +212,19 @@ header {
 .logocontenedor {
     position: absolute; /*Pongo el logo en una posición absoluta para que quede sobre la imagen del estadio*/
     top: 10px;
-    left: 10px;
+    left: 20px;
     z-index: 3;
 }
 
-.logo {
+.logo{
     height: 100px;
 }
 
-a:link {
+a:link{
     color: rgb(248, 243, 243);
 }
 
-a:visited {
+a:visited{
     color: rgba(233, 208, 179, 0.868);
 }
 
@@ -237,7 +234,7 @@ header > nav {
     display: flex;
     justify-content: space-between;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
     margin-left: 150px; /*Espacio a la izquierda para que no se superponga con el logo*/
 }

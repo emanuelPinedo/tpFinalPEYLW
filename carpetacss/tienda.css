@@ -1,61 +1,9 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    max-width: 100%;
-    background: #000;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    color: #fff;
-}
-
-img {
-    width: 100%;
-}
-
-.contenedor {
-    display: flex;
-    flex-direction: column;
-    margin-top: 150px; /* Ajustar para dejar espacio al header */
-    width: 100%;
-}
-
-.item {
-    display: flex;
-    background-color: #222;
-    border: 1px solid #444;
-    margin: 10px;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.item .imagen {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.item .contenido {
-    flex: 2;
-    text-align: left;
-}
-
-.item .contenido b,
-.item .contenido h2,
-.item .contenido span {
-    display: block;
-}
-
-.divisor {
-    margin: 10px 0;
-    height: 1px;
-    background-color: #ddd;
-}
-
-.contenido > h2{
-    color: rgb(250, 22, 22);
+    min-height: 100vh;
+    max-width: 100%;
 }
 
 /*SECCIONES*/
@@ -69,12 +17,13 @@ header {
     position: absolute; /*Añadir para que los elementos con position absolute dentro de header se posicionen relativos a este*/
     top: 0;
     width: 100%;
+    z-index: 3; /* Asegura que el header esté sobre el login*/
 }
 
 .logocontenedor {
     position: absolute; /*Pongo el logo en una posición absoluta para que quede sobre la imagen del estadio*/
     top: 10px;
-    left: 10px;
+    left: 5px;
     z-index: 3;
 }
 
@@ -96,9 +45,9 @@ header > nav {
     display: flex;
     justify-content: space-between;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
-    margin-left: 150px; /*Espacio a la izquierda para que no se superponga con el logo*/
+    margin-left: 140px; /*Espacio a la izquierda para que no se superponga con el logo*/
 }
 
 /*Va a seleccionar todos los elementos de nav que sean divs*/

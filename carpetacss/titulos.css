@@ -1,74 +1,40 @@
 body {
-    background: #0f0e0e;
-    color: white;
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    background: #ffffff;
     min-height: 100vh;
     max-width: 100%;
 }
 
-.contenido {
-    display: flex;
-    flex: 1;
-}
-
-.nombreestadio {
-    padding: 30px;
-    font-size: 40px;
-    line-height: 1.6;
+.red{
     color: rgb(255, 7, 7);
-    margin-top: 60px; 
-    text-align: center;
-}
-
-.cajainfo {
-    margin-top: 5px;
-    padding: 20px;
-    width: 16.4%;
-    height: 100%;
-    margin-top: 20px;
-    margin-bottom: auto;
-    height: 600px;
     text-align: left;
 }
 
-b {
-    font-size: larger;
+.titulos{
+    padding: 80px;
+    margin: 80px;
 }
 
-h2 {
-    color: rgb(255, 7, 7);
+ul > img {
+    max-width: 100%;
+    height: auto;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
-.cajaubi {
-    margin-top: 5px;
-    margin-left: 10px;
-    padding-top: 22px;
-    width: 1000px;
-    height: 600px;
+.conmebol{
+    height: 862px;
+    width: 862px;
 }
 
-.cajaubi iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-.cajafotos {
-    margin-top: 5px;
-    margin-bottom: auto;
-    padding: 20px;
-    width: 30%;
-}
-
-.estadio-img {
-    width: 100%;
-    height: 300px;
-    max-width: 600px;
-    margin-bottom: 20px; /* Espaciado entre imágenes */
+/* Aumentar el tamaño de las letras en las listas */
+ul > li {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    clear: both;
 }
 
 /*SECCIONES*/
@@ -110,7 +76,7 @@ header > nav {
     display: flex;
     justify-content: space-between;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
     margin-left: 150px; /*Espacio a la izquierda para que no se superponga con el logo*/
 }

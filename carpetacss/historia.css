@@ -1,0 +1,120 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    max-width: 100%;
+    background: #000;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+}
+
+img {
+    width: 100%;
+}
+
+span{
+    font-size: 25px;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px; /* Ajustar para dejar espacio al header */
+    width: 100%;
+}
+
+.item {
+    display: flex;
+    background-color: #222;
+    border: 1px solid #444;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.item .imagen {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.item .contenido {
+    flex: 2;
+    text-align: left;
+}
+
+.item .contenido b,
+.item .contenido h2,
+.item .contenido span {
+    display: block;
+}
+
+.divisor {
+    margin: 10px 0;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.contenido > h2{
+    color: rgb(250, 22, 22);
+}
+
+/*SECCIONES*/
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: absolute; /*Añadir para que los elementos con position absolute dentro de header se posicionen relativos a este*/
+    top: 0;
+    width: 100%;
+}
+
+.logocontenedor {
+    position: absolute; /*Pongo el logo en una posición absoluta para que quede sobre la imagen del estadio*/
+    top: 10px;
+    left: 20px;
+    z-index: 3;
+}
+
+.logo {
+    height: 100px;
+}
+
+a:link {
+    color: rgb(248, 243, 243);
+}
+
+a:visited {
+    color: rgba(233, 208, 179, 0.868);
+}
+
+header > nav {
+    width: 100%;
+    flex: 1; /*Permite que el nav ocupe el espacio restante */
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-left: 150px; /*Espacio a la izquierda para que no se superponga con el logo*/
+}
+
+/*Va a seleccionar todos los elementos de nav que sean divs*/
+nav > div {
+    width: 14.6%;
+    float: left;
+    background-color: #333;
+    height: 10%;
+    padding: 1.1rem;
+    box-sizing: border-box;
+    border: 2px solid black;
+}
+
+nav > div:hover {
+    background-color: rgb(246, 39, 39);
+    color: rgb(15, 16, 16);
+}
