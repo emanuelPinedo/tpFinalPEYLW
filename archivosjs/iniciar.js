@@ -2,20 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('formulario');
 
     form.addEventListener('submit', function(event) {
-        // Llama a la función de registro y previene el envío si la validación falla
+        event.preventDefault(); // Evita el envío del formulario por defecto
+
         if (validar()) {
-            if (!iniciarSesion()) {
-                event.preventDefault();
-            }
-        } else {
-            event.preventDefault();
+            iniciarSesion();
         }
     });
 });
 
 function validar() {
-    var email = document.getElementById('email').value;
-    var contra = document.getElementById('password').value;
+    var email = document.getElementById('email').value.trim();
+    var contra = document.getElementById('password').value.trim();
 
     var validarCampos = true;
 
@@ -33,14 +30,10 @@ function validar() {
         despintarCampoError('password');
     }
 
-    if (validarCampos) {
-        alert('Todos los datos son correctos.');
-        return true;
-    } else {
-        return false;
-    }
+    return validarCampos;
 }
 
+/*Funciones recicladas del TPO (PINTAR Y VALIDAR) */
 function validarEmail(email) {
     var contenidoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return contenidoEmail.test(email);
@@ -68,21 +61,17 @@ function iniciarSesion() {
         var usuario = JSON.parse(usuarioJSON);
 
         if (usuario.password === password) {
-            //guardo la sesion del user
             var sesionActual = {
                 email: email,
                 password: password
-            }
+            };
             localStorage.setItem('sesionActual', JSON.stringify(sesionActual));
-
-            alert('Inicio de sesión realizado');
-            return true;
+            alert('Inicio de sesión exitoso');
+            window.location.href = 'tienda.html'; //Cuando logea lo mando a la tienda.
         } else {
-            alert('Email o contraseña incorrectos');
-            return false;
+            alert('Contraseña incorrecta');
         }
     } else {
         alert('Email no encontrado');
-        return false;
     }
 }

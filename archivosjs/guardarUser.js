@@ -2,22 +2,19 @@ document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('formulario');
 
     form.addEventListener('submit', function(event) {
-        // Llama a la función de registro y previene el envío si la validación falla
+        event.preventDefault(); // Evita el envío del formulario por defecto
+
         if (validar()) {
-            if (!guardarUser()) {
-                event.preventDefault();
-            }
-        } else {
-            event.preventDefault();
+            guardarUser();
         }
     });
 });
 
 function validar() {
-    var nombre = document.getElementById('nombre').value;
-    var apellido = document.getElementById('apellido').value;
-    var email = document.getElementById('email').value;
-    var contra = document.getElementById('password').value;
+    var nombre = document.getElementById('nombre').value.trim();
+    var apellido = document.getElementById('apellido').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var contra = document.getElementById('password').value.trim();
 
     var validarCampos = true;
 
@@ -49,19 +46,10 @@ function validar() {
         despintarCampoError('password');
     }
 
-    if (validarCampos) {
-        if (verificarUser(email)) {
-            alert('Este Email ya está en uso.');
-            return false;
-        }
-        alert('Datos Correctos. Cuenta Creada.');
-        guardarUser();
-        return true;
-    } else {
-        return false;
-    }
+    return validarCampos;
 }
 
+/*Funciones recicladas del TPO (PINTAR Y VALIDAR) */
 function validarEmail(email) {
     var contenidoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return contenidoEmail.test(email);
@@ -90,38 +78,36 @@ function despintarCampoError(idDelCampo) {
 }
 
 function guardarUser() {
-    var nombreInput = document.getElementById('nombre');
-    var apellidoInput = document.getElementById('apellido');
-    var emailInput = document.getElementById('email');
-    var contraseniaInput = document.getElementById('password');
-    var nombre = nombreInput.value.trim();
-    var apellido = apellidoInput.value.trim();
-    var email = emailInput.value.trim();
-    var password = contraseniaInput.value.trim();
+    var nombre = document.getElementById('nombre').value.trim();
+    var apellido = document.getElementById('apellido').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var password = document.getElementById('password').value.trim();
 
-    if (!verificarUser(nombre)) {
-        var usuario = {
-            nombre: nombre,
-            apellido: apellido,
-            password: password,
-            email: email
-        };
-        setEntry('iduser' + nombre, usuario);
-        window.location.href = 'iniciarSesion.html';
+    var usuario = {
+        nombre: nombre,
+        apellido: apellido,
+        email: email,
+        password: password
+    };
+
+    if (!verificarUser(email)) {
+        var clave = 'iduser' + email;
+        localStorage.setItem(clave, JSON.stringify(usuario));
+        alert('Datos Correctos. Cuenta Creada.');
+        window.location.href = 'iniciarSesion.html'; //Despues de que se registre lo mando a que se logee
+    } else {
+        alert('Este Email ya está en uso.');
     }
 }
 
-function setEntry(key, valor) {
-    localStorage.setItem(key, JSON.stringify(valor));
-}
-
 function verificarUser(email) {
-    // Verificar si el email existe
     for (var i = 0; i < localStorage.length; i++) {
         var clave = localStorage.key(i);
-        var usuario = JSON.parse(localStorage.getItem(clave));
-        if (usuario.email === email) {
-            return true;
+        if (clave.startsWith('iduser')) {
+            var usuario = JSON.parse(localStorage.getItem(clave));
+            if (usuario.email === email) {
+                return true;
+            }
         }
     }
     return false;
