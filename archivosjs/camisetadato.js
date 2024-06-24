@@ -19,8 +19,22 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); // Evitar el envío por defecto del formulario
         var nombre = nombreInput.value.trim().toUpperCase();
         var numero = numeroInput.value.trim();
-        window.location.href = `tienda.html?nombre=${encodeURIComponent(nombre)}&numero=${encodeURIComponent(numero)}`;
-        alert('Usted ha añadido una Camiseta Personalizada')
+
+        // Crear el objeto de la camiseta personalizada
+        var productoPersonalizado = {
+            quantity: 1,
+            title: `Camiseta River 2024 PERSONALIZADA: ${nombre} #${numero}`,
+            price: 80000,
+            nombre: nombre,
+            numero: numero
+        };
+
+        // Guardar en el localStorage
+        localStorage.setItem('productoPersonalizado', JSON.stringify(productoPersonalizado));
+
+        // Redirigir a la tienda
+        alert('Usted ha añadido una Camiseta Personalizada');
+        window.location.href = 'tienda.html';
     });
 
     // Función para actualizar la información de la camiseta

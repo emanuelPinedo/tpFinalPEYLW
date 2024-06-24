@@ -1,5 +1,4 @@
-//Estas 2 funciones son para que el usuario solo use el carrito si esta logeado.
-// Obtener el estado de la sesión actual
+// Función para obtener el estado de la sesión actual
 function obtenerSesionActual() {
     return JSON.parse(localStorage.getItem('sesionActual'));
 }
@@ -27,8 +26,15 @@ var productsList = document.querySelector('.container-items');
 // Variable de arreglos de Productos
 let allProducts = [];
 
-var valorTotal = document.querySelector('.total-pagar');
+// Leer el producto personalizado del localStorage si existe
+var productoPersonalizado = localStorage.getItem('productoPersonalizado');
+if (productoPersonalizado) {
+    productoPersonalizado = JSON.parse(productoPersonalizado);
+    allProducts.push(productoPersonalizado);
+    localStorage.removeItem('productoPersonalizado');
+}
 
+var valorTotal = document.querySelector('.total-pagar');
 var countProducts = document.querySelector('#contador-productos');
 
 var cartEmpty = document.querySelector('.cart-empty');
@@ -46,14 +52,12 @@ productsList.addEventListener('click', e => {
         var infoProduct = {
             quantity: 1,
             title: product.querySelector('h2').textContent,
-            price: product.querySelector('p').textContent,
+            price: parseFloat(product.querySelector('p').textContent.slice(1)),
         };
 
-        var exits = allProducts.some(
-            product => product.title === infoProduct.title
-        );
+        var exists = allProducts.some(product => product.title === infoProduct.title);
 
-        if (exits) {
+        if (exists) {
             var products = allProducts.map(product => {
                 if (product.title === infoProduct.title) {
                     product.quantity++;
@@ -76,16 +80,14 @@ rowProduct.addEventListener('click', e => {
         var product = e.target.parentElement;
         var title = product.querySelector('p').textContent;
 
-        allProducts = allProducts.filter(
-            product => product.title !== title
-        );
+        allProducts = allProducts.filter(product => product.title !== title);
 
         showHTML();
     }
 });
 
-// Funcion para mostrar  HTML
-var showHTML = () => {
+// Función para mostrar HTML
+function showHTML() {
     if (!allProducts.length) {
         cartEmpty.classList.remove('hidden');
         rowProduct.classList.add('hidden');
@@ -110,7 +112,7 @@ var showHTML = () => {
             <div class="info-cart-product">
                 <span class="cantidad-producto-carrito">${product.quantity}</span>
                 <p class="titulo-producto-carrito">${product.title}</p>
-                <span class="precio-producto-carrito">${product.price}</span>
+                <span class="precio-producto-carrito">$${product.price}</span>
             </div>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -130,10 +132,13 @@ var showHTML = () => {
 
         rowProduct.append(containerProduct);
 
-        total = total + parseInt(product.quantity * product.price.slice(1));
-        totalOfProducts = totalOfProducts + product.quantity;
+        total += product.quantity * product.price;
+        totalOfProducts += product.quantity;
     });
 
     valorTotal.innerText = `$${total}`;
     countProducts.innerText = totalOfProducts;
-};
+}
+
+// Mostrar el HTML inicialmente si hay productos en el carrito
+showHTML();

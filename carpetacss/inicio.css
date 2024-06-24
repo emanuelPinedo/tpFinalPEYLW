@@ -94,14 +94,16 @@ nav > div:hover {
 
 .noticias-grid {
     display: flex;
-    gap: 20px;
+    transition: transform 0.5s ease-in-out;
 }
 
 .noticia {
+    min-width: 100%;
+    box-sizing: border-box;
+    position: relative; /* Añadido para que .info se posicione absolutamente dentro de .slide */
     flex: 1;
     background: #f1f1f1;
     padding: 10px;
-    border-radius: 5px;
     color: #111;
 }
 
@@ -156,4 +158,55 @@ height: auto;
 
 .contacto {
     text-align: left;
+}
+
+/*SLIDE*/
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 1% auto 20px;
+    overflow: hidden;
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+}
+
+.slide img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.nav {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.nav-boton {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#slide1:checked ~ .noticias-grid {
+    transform: translateX(0%);
+}
+
+#slide2:checked ~ .noticias-grid {
+    transform: translateX(-100%);
+}
+
+#slide3:checked ~ .noticias-grid {
+    transform: translateX(-200%);
+}
+
+#slide4:checked ~ .noticias-grid {
+    transform: translateX(-300%);
 }
