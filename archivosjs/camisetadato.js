@@ -20,6 +20,15 @@ document.addEventListener('DOMContentLoaded', function() {
         var nombre = nombreInput.value.trim().toUpperCase();
         var numero = numeroInput.value.trim();
 
+        //Valido que los campos no sean vacios
+        if(nombre === '' || numero === ''){
+            alert('Complete los campos, no puede mandar algo vacío.')
+            return; //Detengo la ejecución si hay campso vacíos
+        } else if(numero >= 0 && numero > 99){
+            alert('El numero debe ser mayor o igual a 0 y menor a 99.')
+            return;//Lo mismo de antes
+        }
+
         // Crear el objeto de la camiseta personalizada
         var productoPersonalizado = {
             quantity: 1,
