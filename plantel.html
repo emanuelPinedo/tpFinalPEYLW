@@ -291,5 +291,18 @@
             <label for="slide29" class="nav-boton"></label>
         </div>
     </div>
+    <script>//SCRIPT PARA QUE LOS SLIDERS SEAN AUTOMATICOS
+        let indice = 0;
+        const slides = document.querySelectorAll('input[name="slide"]');//Selecciono todos los elementos que coincidan con ese input en el css
+        const slidesTotales = slides.length;
+
+        function mostrarSlideSgt() {
+            slides[indice].checked = false;//deseleccoina el indice actual
+            indice = (indice + 1) % slidesTotales;//incremento el indice y si alcanza el valor de slidesTotales vuelve a 0
+            slides[indice].checked = true;//selecciona el nuevo indice
+        }
+        //Busca la funcion por su nombre y le pasa su referencia.
+        setInterval(mostrarSlideSgt, 2000); // Cambia el slide cada 2 segundos(2000 milisegundos)
+    </script>
 </body>
 </html>
