@@ -14,16 +14,28 @@
 
         <div class="slides">
             <div class="slide" id="s1">
-                <img src="./tienda/camiseta river.jpg" alt="Foto 1">
+                <img src="./tienda/camiseta river.jpg" class="img1" alt="CamisetaRiver">
             </div>
             <div class="slide" id="s2">
-                <img src="./tienda/camisetareves.jpg" alt="Foto 2">
+                <img src="./tienda/camisetareves.jpg" class="img2" alt="CamisetaReves">
+                <form class="formu">
+                    <input type="text" placeholder="Nombre Camiseta" id="nombreInput"><br><br>
+                    <input type="number" placeholder="Número Camiseta" id="numeroInput"><br><br>
+                    <input type="submit">
+                </form>
+                <div class="info">
+                    <p class="nombre"></p>
+                    <p class="numero"></p>
+                </div>
             </div>
         </div>
+
         <div class="nav">
             <label for="slide1" class="nav-boton"></label>
             <label for="slide2" class="nav-boton"></label>
         </div>
     </div>
+
+    <script src="./archivosjs/camisetadato.js"></script>
 </body>
 </html>

@@ -1,10 +1,20 @@
+//Estas 2 funciones son para que el usuario solo use el carrito si esta logeado.
+// Obtener el estado de la sesión actual
+function obtenerSesionActual() {
+    return JSON.parse(localStorage.getItem('sesionActual'));
+}
+
+// Función para verificar si el usuario está logeado
+function usuarioEstaLogeado() {
+    var sesion = obtenerSesionActual();
+    return sesion !== null;
+}
+
 var btnCart = document.querySelector('.container-cart-icon');
-var containerCartProducts = document.querySelector(
-	'.container-cart-products'
-);
+var containerCartProducts = document.querySelector('.container-cart-products');
 
 btnCart.addEventListener('click', () => {
-	containerCartProducts.classList.toggle('hidden-cart');
+    containerCartProducts.classList.toggle('hidden-cart');
 });
 
 /* ========================= */
@@ -25,75 +35,78 @@ var cartEmpty = document.querySelector('.cart-empty');
 var cartTotal = document.querySelector('.cart-total');
 
 productsList.addEventListener('click', e => {
-	if (e.target.classList.contains('btn-add-cart')) {
-		var product = e.target.parentElement;
+    if (e.target.classList.contains('btn-add-cart')) {
+        if (!usuarioEstaLogeado()) {
+            alert('Debe iniciar sesión para añadir productos al carrito.');
+            return;
+        }
 
-		var infoProduct = {
-			quantity: 1,
-			title: product.querySelector('h2').textContent,
-			price: product.querySelector('p').textContent,
-		};
+        var product = e.target.parentElement;
 
-		var exits = allProducts.some(
-			product => product.title === infoProduct.title
-		);
+        var infoProduct = {
+            quantity: 1,
+            title: product.querySelector('h2').textContent,
+            price: product.querySelector('p').textContent,
+        };
 
-		if (exits) {
-			var products = allProducts.map(product => {
-				if (product.title === infoProduct.title) {
-					product.quantity++;
-					return product;
-				} else {
-					return product;
-				}
-			});
-			allProducts = [...products];
-		} else {
-			allProducts = [...allProducts, infoProduct];
-		}
+        var exits = allProducts.some(
+            product => product.title === infoProduct.title
+        );
 
-		showHTML();
-	}
+        if (exits) {
+            var products = allProducts.map(product => {
+                if (product.title === infoProduct.title) {
+                    product.quantity++;
+                    return product;
+                } else {
+                    return product;
+                }
+            });
+            allProducts = [...products];
+        } else {
+            allProducts = [...allProducts, infoProduct];
+        }
+
+        showHTML();
+    }
 });
 
 rowProduct.addEventListener('click', e => {
-	if (e.target.classList.contains('icon-close')) {
-		var product = e.target.parentElement;
-		var title = product.querySelector('p').textContent;
+    if (e.target.classList.contains('icon-close')) {
+        var product = e.target.parentElement;
+        var title = product.querySelector('p').textContent;
 
-		allProducts = allProducts.filter(
-			product => product.title !== title
-		);
+        allProducts = allProducts.filter(
+            product => product.title !== title
+        );
 
-		console.log(allProducts);
-
-		showHTML();
-	}
+        showHTML();
+    }
 });
 
 // Funcion para mostrar  HTML
 var showHTML = () => {
-	if (!allProducts.length) {
-		cartEmpty.classList.remove('hidden');
-		rowProduct.classList.add('hidden');
-		cartTotal.classList.add('hidden');
-	} else {
-		cartEmpty.classList.add('hidden');
-		rowProduct.classList.remove('hidden');
-		cartTotal.classList.remove('hidden');
-	}
+    if (!allProducts.length) {
+        cartEmpty.classList.remove('hidden');
+        rowProduct.classList.add('hidden');
+        cartTotal.classList.add('hidden');
+    } else {
+        cartEmpty.classList.add('hidden');
+        rowProduct.classList.remove('hidden');
+        cartTotal.classList.remove('hidden');
+    }
 
-	// Limpiar HTML
-	rowProduct.innerHTML = '';
+    // Limpiar HTML
+    rowProduct.innerHTML = '';
 
-	let total = 0;
-	let totalOfProducts = 0;
+    let total = 0;
+    let totalOfProducts = 0;
 
-	allProducts.forEach(product => {
-		var containerProduct = document.createElement('div');
-		containerProduct.classList.add('cart-product');
+    allProducts.forEach(product => {
+        var containerProduct = document.createElement('div');
+        containerProduct.classList.add('cart-product');
 
-		containerProduct.innerHTML = `
+        containerProduct.innerHTML = `
             <div class="info-cart-product">
                 <span class="cantidad-producto-carrito">${product.quantity}</span>
                 <p class="titulo-producto-carrito">${product.title}</p>
@@ -115,13 +128,12 @@ var showHTML = () => {
             </svg>
         `;
 
-		rowProduct.append(containerProduct);
+        rowProduct.append(containerProduct);
 
-		total =
-			total + parseInt(product.quantity * product.price.slice(1));
-		totalOfProducts = totalOfProducts + product.quantity;
-	});
+        total = total + parseInt(product.quantity * product.price.slice(1));
+        totalOfProducts = totalOfProducts + product.quantity;
+    });
 
-	valorTotal.innerText = `$${total}`;
-	countProducts.innerText = totalOfProducts;
+    valorTotal.innerText = `$${total}`;
+    countProducts.innerText = totalOfProducts;
 };

@@ -41,7 +41,7 @@ nav {
     display: flex;
     justify-content: space-between;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.4rem;
+    font-size: 0.8rem;
     text-align: center;
     margin-left: 150px; /*Espacio a la izquierda para que no se superponga con el logo*/
 }
