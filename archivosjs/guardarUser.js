@@ -1,11 +1,12 @@
+//Agrego un evento q se ejecuta cuando carga el contenido del DOM
 document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('formulario');
 
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function(event) { //Se activa cuando se manda el formulario
         event.preventDefault(); // Evita el envío del formulario por defecto
 
-        if (validar()) {
-            guardarUser();
+        if (validar()) { //Si todos los campos se validan
+            guardarUser(); //Guardo los datos
         }
     });
 });
@@ -83,6 +84,7 @@ function guardarUser() {
     var email = document.getElementById('email').value.trim();
     var password = document.getElementById('password').value.trim();
 
+    //Creo un objeto
     var usuario = {
         nombre: nombre,
         apellido: apellido,
@@ -91,8 +93,8 @@ function guardarUser() {
     };
 
     if (!verificarUser(email)) {
-        var clave = 'iduser' + email;
-        localStorage.setItem(clave, JSON.stringify(usuario));
+        var clave = 'iduser' + email;//Clave que usa el email del user
+        localStorage.setItem(clave, JSON.stringify(usuario));//Guardo el objeto en el localstorage como cadena JSOn
         alert('Datos Correctos. Cuenta Creada.');
         window.location.href = 'iniciarSesion.html'; //Despues de que se registre lo mando a que se logee
     } else {
@@ -102,10 +104,10 @@ function guardarUser() {
 
 function verificarUser(email) {
     for (var i = 0; i < localStorage.length; i++) {
-        var clave = localStorage.key(i);
-        if (clave.startsWith('iduser')) {
-            var usuario = JSON.parse(localStorage.getItem(clave));
-            if (usuario.email === email) {
+        var clave = localStorage.key(i);//Voy a obtener la clave en la posicon del indice
+        if (clave.startsWith('iduser')) {//Verifico qu e la clave empiece con "iduser"
+            var usuario = JSON.parse(localStorage.getItem(clave));//Convierte el objeto de JSON a un objeto Js
+            if (usuario.email === email) {//Comparo emails
                 return true;
             }
         }

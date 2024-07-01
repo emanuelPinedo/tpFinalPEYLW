@@ -14,7 +14,7 @@ var containerCartProducts = document.querySelector('.container-cart-products');
 
 btnCart.addEventListener('click', () => {
     containerCartProducts.classList.toggle('hidden-cart');
-});
+});//Al clicker el icono del carrito mustra o oculta los productos del carrito
 
 /* ========================= */
 var cartInfo = document.querySelector('.cart-product');
@@ -23,14 +23,16 @@ var rowProduct = document.querySelector('.row-product');
 // Lista de todos los contenedores de productos
 var productsList = document.querySelector('.container-items');
 
-// Variable de arreglos de Productos
+// Variable de arreglos de Productos, almacena los productos
 let allProducts = [];
 
 // Leer el producto personalizado del localStorage si existe
+//Almacena el producto personalizado
 var productoPersonalizado = localStorage.getItem('productoPersonalizado');
 if (productoPersonalizado) {
-    productoPersonalizado = JSON.parse(productoPersonalizado);
-    allProducts.push(productoPersonalizado);
+    productoPersonalizado = JSON.parse(productoPersonalizado);//De cadena JSON a obj JS
+    allProducts.push(productoPersonalizado);//Añadimos el producto al carrtio
+    //Se quita del localstorage
     localStorage.removeItem('productoPersonalizado');
 }
 
@@ -40,6 +42,7 @@ var countProducts = document.querySelector('#contador-productos');
 var cartEmpty = document.querySelector('.cart-empty');
 var cartTotal = document.querySelector('.cart-total');
 
+//Al clickear verificamos que el user este logeado
 productsList.addEventListener('click', e => {
     if (e.target.classList.contains('btn-add-cart')) {
         if (!usuarioEstaLogeado()) {
@@ -49,6 +52,8 @@ productsList.addEventListener('click', e => {
 
         var product = e.target.parentElement;
 
+        //Obtiene Info del producto
+        //Creo objeto
         var infoProduct = {
             quantity: 1,
             title: product.querySelector('h2').textContent,
@@ -57,6 +62,7 @@ productsList.addEventListener('click', e => {
 
         var exists = allProducts.some(product => product.title === infoProduct.title);
 
+        //Verifica que exista el producto en el carrito para incrementar la cant o añadirlo al carrito.
         if (exists) {
             var products = allProducts.map(product => {
                 if (product.title === infoProduct.title) {
@@ -71,11 +77,14 @@ productsList.addEventListener('click', e => {
             allProducts = [...allProducts, infoProduct];
         }
 
+        //Actualiza la vista del carrito
         showHTML();
     }
 });
 
+//Eliminar producto
 rowProduct.addEventListener('click', e => {
+    //Al clickear la X se elimina el productoo
     if (e.target.classList.contains('icon-close')) {
         var product = e.target.parentElement;
         var title = product.querySelector('p').textContent;
@@ -86,10 +95,10 @@ rowProduct.addEventListener('click', e => {
     }
 });
 
-// Función para mostrar HTML
+// Función para mostrar/actualizar HTML
 function showHTML() {
-    if (!allProducts.length) {
-        cartEmpty.classList.remove('hidden');
+    if (!allProducts.length) {//Comprueba si el arreglo no tiene productos
+        cartEmpty.classList.remove('hidden');//Si esta vacio va a mostrar el msj
         rowProduct.classList.add('hidden');
         cartTotal.classList.add('hidden');
     } else {
@@ -104,10 +113,14 @@ function showHTML() {
     let total = 0;
     let totalOfProducts = 0;
 
+    //Itera cada producto del array
     allProducts.forEach(product => {
         var containerProduct = document.createElement('div');
+        //cREA un div para contener la info del producto
         containerProduct.classList.add('cart-product');
+        //Añadae la clase al div creado
 
+        //Creacion html para cada producto
         containerProduct.innerHTML = `
             <div class="info-cart-product">
                 <span class="cantidad-producto-carrito">${product.quantity}</span>
@@ -130,6 +143,7 @@ function showHTML() {
             </svg>
         `;
 
+        //se añade el producto al contenedor
         rowProduct.append(containerProduct);
 
         total += product.quantity * product.price;
@@ -141,4 +155,5 @@ function showHTML() {
 }
 
 // Mostrar el HTML inicialmente si hay productos en el carrito
+//Actualiza vista del carrito
 showHTML();

@@ -20,20 +20,20 @@ body {
     max-width: 770px;
     text-align: center;
     margin: 1% auto 20px;
-    overflow: hidden;
-    background-color: transparent;
-    backdrop-filter: blur(20px);
+    overflow: hidden; /*Oculto contenido del slider(los textos) */
+    background-color: transparent; /*Fondo transparente*/
+    backdrop-filter: blur(20px); /*Desenfoque*/
 }
 
 .slides {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out; /*Funcion ed temporizacion, Transicion suave a los sliders*/
     margin-top: 10%;
 }
 
 .slide {
     min-width: 100%;
-    box-sizing: border-box;
+    box-sizing: border-box; /*Incluye border, y padding en alto y ancho*/
 }
 
 .slide img {

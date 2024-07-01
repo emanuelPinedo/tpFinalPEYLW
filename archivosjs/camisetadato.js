@@ -1,3 +1,4 @@
+//Agrego un evento q se ejecuta cuando carga el contenido del DOM
 document.addEventListener('DOMContentLoaded', function() {
     var nombreInput = document.getElementById('nombreInput');
     var numeroInput = document.getElementById('numeroInput');
