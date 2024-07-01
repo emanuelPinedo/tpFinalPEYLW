@@ -19,15 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(event) {
         event.preventDefault(); // Evitar el envío por defecto del formulario
         var nombre = nombreInput.value.trim().toUpperCase();
-        var numero = numeroInput.value.trim();
+        var numero = parseInt(numeroInput.value.trim(), 10);
 
-        //Valido que los campos no sean vacios
-        if(nombre === '' || numero === ''){
-            alert('Complete los campos, no puede mandar algo vacío.')
-            return; //Detengo la ejecución si hay campso vacíos
-        } else if(numero >= 0 && numero > 99){
-            alert('El numero debe ser mayor o igual a 0 y menor a 99.')
-            return;//Lo mismo de antes
+        // Validar que los campos no sean vacíos
+        if (nombre === '' || isNaN(numeroInput.value.trim())) {
+            alert('Complete los campos, no puede mandar algo vacío.');
+            return; // Detengo la ejecución si hay campso vacíos
+        }
+
+        // Validar que el número esté en el rango permitido
+        if (numero < 0 || numero > 99) {
+            alert('El número debe ser mayor o igual a 0 y menor o igual a 99.');
+            return; // Detengo la ejecución si el número es negativo o mayor a 99
         }
 
         // Crear el objeto de la camiseta personalizada
